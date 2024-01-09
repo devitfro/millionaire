@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Who wants to be a millionaire?</title>
+</head>
+<body>
+    <div class="main_wrapper">
+        <div class="logo_container">
+            <h1 class="main_title">Who wants to be a millionaire?</h1>
+        </div>
+
+        <div class="technical_container">
+            <div class="tips_and_timer_container">
+                <div class="tips_container">
+                    <button type="button" class="friends_help" id="friendsHelp"></button>
+                    <button class="fifty_fifty">50:50</button>
+                    <button class="audience_help"></button>
+                    <!-- <button class="x2">x2</button> -->
+                </div>
+                <div class="timer_container">
+                    <div class="timer_text" id="countdown"></div>
+                </div>
+            </div>
+
+            <div class="main_price_wrapper">
+                <div class="price_container">
+                    <div class="price" id="price-15">
+                        <div class="number">15</div>
+                        <div class="win_price" id="winPrice-15">1 000 000</div>
+                    </div>
+
+                    <div class="price" id="price-14">
+                        <div class="number">14</div>
+                        <div class="win_price" id="winPrice-14">500 000</div>
+                    </div>
+
+                    <div class="price" id="price-13">
+                        <div class="number">13</div>
+                        <div class="win_price" id="winPrice-13">250 000</div>
+                    </div>
+
+                    <div class="price" id="price-12">
+                        <div class="number">12</div>
+                        <div class="win_price" id="winPrice-12">125 000</div>
+                    </div>
+
+                    <div class="price" id="price-11">
+                        <div class="number">11</div>
+                        <div class="win_price" id="winPrice-11">64 000</div>
+                    </div>
+
+                    <div class="price" id="price-10">
+                        <div class="number">10</div>
+                        <div class="win_price" id="winPrice-10">32 000</div>
+                    </div>
+
+                    <div class="price" id="price-9">
+                        <div class="number">9</div>
+                        <div class="win_price" id="winPrice-9">16 000</div>
+                    </div>
+
+                    <div class="price" id="price-8">
+                        <div class="number">8</div>
+                        <div class="win_price" id="winPrice-8">8 000</div>
+                    </div>
+
+                    <div class="price" id="price-7">
+                        <div class="number">7</div>
+                        <div class="win_price" id="winPrice-7">4 000</div>
+                    </div>
+
+                    <div class="price" id="price-6">
+                        <div class="number">6</div>
+                        <div class="win_price" id="winPrice-6">2 000</div>
+                    </div>
+
+                    <div class="price" id="price-5">
+                        <div class="number">5</div>
+                        <div class="win_price" id="winPrice-5">1 000</div>
+                    </div>
+
+                    <div class="price" id="price-4">
+                        <div class="number">4</div>
+                        <div class="win_price" id="winPrice-4">500</div>
+                    </div>
+
+                    <div class="price" id="price-3">
+                        <div class="number">3</div>
+                        <div class="win_price" id="winPrice-3">300</div>
+                    </div>
+
+                    <div class="price" id="price-2">
+                        <div class="number">2</div>
+                        <div class="win_price" id="winPrice-2">200</div>
+                    </div>
+
+                    <div class="price win_color" id="price-1">
+                        <div class="number">1</div>
+                        <div class="win_price" id="winPrice-1">100</div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+
+        <div class="game_container" id="gameContainer">
+            <div class="question_container" id="question">
+                <p class="question_text" id="questionText">How are you?</p>
+            </div>
+
+            <div class="answers_container">
+                <div class="answer_wrapper answer_wrapper_01" id="answer_wrapper_01">
+                    <div class="text_answer text_answer01" onclick="checkAnswer01()" id="answer01">Answer 01</div>
+                </div>
+                <div class="answer_wrapper answer_wrapper_02" id="answer_wrapper_02">
+                    <div class="text_answer text_answer02" onclick="checkAnswer02()" id="answer02">Answer 02</div>
+                </div>
+                <div class="answer_wrapper answer_wrapper_03" id="answer_wrapper_03">
+                    <div class="text_answer text_answer03" onclick="checkAnswer03()" id="answer03">Answer 03</div>
+                </div>
+                <div class="answer_wrapper answer_wrapper_04" id="answer_wrapper_04">
+                    <div class="text_answer text_answer04" onclick="checkAnswer04()" id="answer04">Answer 04</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="continue_container" id="continueOrPrize">
+            <div class="continue_question_container">
+                <p class="continue_question_text">Correct! Do you want to continue or take the prize?</p>
+            </div>
+            <div class="prize_display_container">
+                <div class="prize_text_display" id="prizeToTake">500</div>
+            </div>
+            <div class="continue_btn_container">
+                <button class="continue_btn" id="continueYes" onclick="continueTheGame()">YES, I want more money..</button>
+                <button class="continue_btn" id="continueNo" onclick="winGameOver()">NO, I want to take the prize..</button>
+            </div>
+        </div>
+    </div>
+
+    
+ 
+    <script src="scripts/app.js"></script>
+</body>
+</html>
