@@ -79,7 +79,6 @@ table {
 	margin-bottom: 100px;
 	display: flex;
 	justify-content: space-between;
-	/* border: 1px solid #fff; */
 }
 
 /* TIPS AND TIMER CONTAINER */
@@ -88,7 +87,6 @@ table {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	/* border: 1px solid #fff; */
 }
 .tips_container {
 	width: 848px;
@@ -96,9 +94,6 @@ table {
 	padding: 50px;
 	display: flex;
 	justify-content: space-between;
-	/* border-width: 8px;
-   border-style: solid;
-   border-image: linear-gradient(to right, darkblue, darkorchid) 1; */
 }
 .tips_container button:hover {
 	cursor: pointer;
@@ -133,7 +128,6 @@ table {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	/* background: linear-gradient(darkorchid, darkblue); */
 }
 .timer_text {	
 	color: #fff;
@@ -180,13 +174,11 @@ table {
 	padding: 68px 0;
 	margin-bottom: 50px;
 	background: url(../img/answers.png) 0 0;
-	/* border: 1px solid #fff; */
 }
 .question_text {
 	color: #fff;
 	font-size: 52px;
 	text-align: center;
-
 }
 
 /* ANSWERS CONTAINER */
@@ -197,15 +189,12 @@ table {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	/* justify-content: space-between; */
-	/* border: 1px solid #fff; */
 }
 .answer_wrapper {
 	position: relative;
 	width: 960px;
 	height: 108px;
 	margin-top: 50px;
-	/* border: 5px solid red; */
 }
 .answer_wrapper:hover {
 	cursor: pointer;
@@ -224,13 +213,8 @@ table {
 	font-size: 48px;
 	color: #fff;
 	position: absolute;
-	/* border: 5px solid green; */
+
 }
-/* .text_answer:hover {
-	padding: 26px;
-	font-size: 52px;
-	color: #FFD700;
-} */
 .text_answer01, .text_answer03 {
 	left: 200px;
 }
@@ -253,7 +237,6 @@ table {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	/* margin: 100px auto; */
 	display: none;
 }
 
@@ -330,6 +313,12 @@ table {
 
 .correct_answer_wrapper {
 	background-color: green;
+	border-width: 5px;
+   border-style: solid;
+   border-image: linear-gradient(to right, darkblue, darkorchid) 1;
+}
+.answers_for_fiftyfifty {
+	background-color: #FFD700;
 	border-width: 5px;
    border-style: solid;
    border-image: linear-gradient(to right, darkblue, darkorchid) 1;

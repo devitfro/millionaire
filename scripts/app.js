@@ -1,9 +1,30 @@
 let userAnswer;
-let correctAnswer;
 
+// CORRECT ANSWER TEXT AND WRAPPER
+let correctAnswer;
 let correctAnswerWrapper;
+
+// WRAPPER OF WRONG ANSWER
 let wrongAnswerWrapper;
-let correctAnswerForShow;
+0
+// ANSWERS FOR FIFTY-FIFTY
+let correctFiftyWrapper;
+let wrongFiftyWrapper;
+let fifty = false;
+
+// USER ANSWERS
+let answer01 = document.getElementById('answer01');
+let answerWrapper01 = document.getElementById('answer_wrapper_01');
+
+let answer02 = document.getElementById('answer02');
+let answerWrapper02 = document.getElementById('answer_wrapper_02');
+
+let answer03 = document.getElementById('answer03');
+let answerWrapper03 = document.getElementById('answer_wrapper_03');
+
+let answer04 = document.getElementById('answer04');
+let answerWrapper04 = document.getElementById('answer_wrapper_04');
+
 
 let prize = 1;
 let questionsCounter = 0;
@@ -34,18 +55,15 @@ xhr.onload = function() {
 xhr.send();
 
 
-
 // START TIMER
 let time = 60;
-let interval;
+let intervalId;
 const countdownElem = document.getElementById('countdown');
 
 function startTimer() {
-   interval = setInterval(updateCountdown, 1000);
+   intervalId = setInterval(updateCountdown, 1000);
    updateCountdown();
 }
-
-
 
 function updateCountdown() {
    const minutes = Math.floor(time / 60);
@@ -59,9 +77,7 @@ function updateCountdown() {
    time--;
 
    if (minutes == 0 & seconds == 0) {
-      clearInterval(interval);
-      console.log('game over...');
-
+      clearInterval(intervalId);
       sortForCorrectAnswer();
    }
 }
@@ -69,91 +85,97 @@ function updateCountdown() {
 startTimer();
 
 
-
 // CHECK ANSWER
 function checkAnswer01() {
-   let answerWrapper = document.getElementById('answer_wrapper_01');
-   userAnswer = document.getElementById('answer01').innerHTML;
-   clearInterval(interval);
+   clearInterval(intervalId);
 
-   if (userAnswer == correctAnswer)  {
-      console.log('Correct! User answer is - ', userAnswer);
-      correctAnswerWrapper = answerWrapper;
-
+   if (answer01.textContent == correctAnswer)  {
+      correctAnswerWrapper = answerWrapper01;
+      if (fifty) {
+         addAndRemoveFifftyWrapper();
+         fifty = false;
+      }
       addAndRemoveCorrectWrapper();
       setTimeout(continueOrPrize, 1000);
    } else {
-      console.log('game over...');
-
-      wrongAnswerWrapper = answerWrapper;
+      wrongAnswerWrapper = answerWrapper01;
+      if (fifty) {
+         addAndRemoveFifftyWrapper();
+         fifty = false;
+      }
       addAndRemoveWrongWrapper();
       sortForCorrectAnswer();
    } 
 }
 
 function checkAnswer02() {
-   let answerWrapper = document.getElementById('answer_wrapper_02');
-   userAnswer = document.getElementById('answer02').innerHTML;
-   clearInterval(interval);
+   clearInterval(intervalId);
 
-   if (userAnswer == correctAnswer)  {
-      console.log('Correct! User answer is - ', userAnswer);
-      correctAnswerWrapper = answerWrapper;
-
+   if (answer02.textContent == correctAnswer)  {
+      correctAnswerWrapper = answerWrapper02;
+      if (fifty) {
+         addAndRemoveFifftyWrapper();
+         fifty = false;
+      }
       addAndRemoveCorrectWrapper();
       setTimeout(continueOrPrize, 1000);
    } else {
-      console.log('game over...');
-
-      wrongAnswerWrapper = answerWrapper;
+      wrongAnswerWrapper = answerWrapper02;
+      if (fifty) {
+         addAndRemoveFifftyWrapper();
+         fifty = false;
+      }
       addAndRemoveWrongWrapper();
       sortForCorrectAnswer();
    }   
 }
 
 function checkAnswer03() {
-   let answerWrapper = document.getElementById('answer_wrapper_03');
-   userAnswer = document.getElementById('answer03').innerHTML;
-   clearInterval(interval);
+   clearInterval(intervalId);
 
-   if (userAnswer == correctAnswer)  {
-      console.log('Correct! User answer is - ', userAnswer);
-      correctAnswerWrapper = answerWrapper;
-
+   if (answer03.textContent == correctAnswer)  { 
+      correctAnswerWrapper = answerWrapper03;
+      if (fifty) {
+         addAndRemoveFifftyWrapper();
+         fifty = false;
+      }
       addAndRemoveCorrectWrapper();
       setTimeout(continueOrPrize, 1000);
    } else {
-      console.log('game over...');
-
-      wrongAnswerWrapper = answerWrapper;
+      wrongAnswerWrapper = answerWrapper03;
+      if (fifty) {
+         addAndRemoveFifftyWrapper();
+         fifty = false;
+      }
       addAndRemoveWrongWrapper();
       sortForCorrectAnswer();
    } 
 }
 
 function checkAnswer04() {
-   let answerWrapper = document.getElementById('answer_wrapper_04');
-   userAnswer = document.getElementById('answer04').innerHTML;
-   clearInterval(interval);
+   clearInterval(intervalId);
 
-   if (userAnswer == correctAnswer)  {
-      console.log('Correct! User answer is - ', userAnswer);
-      correctAnswerWrapper = answerWrapper;
-
+   if (answer04.textContent == correctAnswer)  {
+      correctAnswerWrapper = answerWrapper04;
+      if (fifty) {
+         addAndRemoveFifftyWrapper();
+         fifty = false;
+      }
       addAndRemoveCorrectWrapper();
       setTimeout(continueOrPrize, 1000);
    } else {
-      console.log('game over...');
-
-      wrongAnswerWrapper = answerWrapper;
+      wrongAnswerWrapper = answerWrapper04;
+      if (fifty) {
+         addAndRemoveFifftyWrapper();
+         fifty = false;
+      }
       addAndRemoveWrongWrapper();
       sortForCorrectAnswer();
    } 
 }
 
 
-
-// CONTINUE THE GAME
+// CONTINUE THE GAME 
 // CONTINUE OR PRIZE
 function continueOrPrize() {
    let continueContainer = document.getElementById('continueOrPrize');
@@ -184,9 +206,8 @@ function continueTheGame() {
    changeWinPrice();
    changeQuestion();
    changeAnswerForNextQuestion();
-   changeCurrentObj();
-   console.log('next current answer - ', currentObj.correctAnswer);
-}
+   changeCurrentObj(); 
+}                            
 
 function changeWinPrice() {
    let price = document.getElementById(`price-${prize}`);
@@ -207,17 +228,10 @@ function changeQuestion() {
 }
 
 function changeAnswerForNextQuestion() {
-   let answer01 = document.getElementById('answer01');
-   answer01.innerHTML = questionsData[questionsCounter]['answers'][0];
-
-   let answer02 = document.getElementById('answer02');
-   answer02.innerHTML = questionsData[questionsCounter]['answers'][1];
-
-   let answer03 = document.getElementById('answer03');
-   answer03.innerHTML = questionsData[questionsCounter]['answers'][2];
-
-   let answer04 = document.getElementById('answer04');
-   answer04.innerHTML = questionsData[questionsCounter]['answers'][3];
+   answer01.textContent = questionsData[questionsCounter]['answers'][0];
+   answer02.textContent = questionsData[questionsCounter]['answers'][1];
+   answer03.textContent = questionsData[questionsCounter]['answers'][2];
+   answer04.textContent = questionsData[questionsCounter]['answers'][3];
 
    correctAnswer = questionsData[questionsCounter]['correctAnswer'];
 }
@@ -231,7 +245,6 @@ function changeCurrentObj() {
 }
 
 
-
 // SHOW CORRECT ANSWER
 function addAndRemoveCorrectWrapper() {
    correctAnswerWrapper.classList.toggle('correct_answer_wrapper');
@@ -242,31 +255,20 @@ function addAndRemoveWrongWrapper() {
 }
 
 function sortForCorrectAnswer() {
-   let answer1 = document.getElementById('answer01').innerHTML;
-   let answer2 = document.getElementById('answer02').innerHTML;
-   let answer3 = document.getElementById('answer03').innerHTML;
-   let answer4 = document.getElementById('answer04').innerHTML;
-
-   let answerWrapper1 = document.getElementById('answer_wrapper_01');
-   let answerWrapper2 = document.getElementById('answer_wrapper_02');
-   let answerWrapper3 = document.getElementById('answer_wrapper_03');
-   let answerWrapper4 = document.getElementById('answer_wrapper_04');
-
-   if (answer1 == correctAnswer) {
-      answerWrapper1.classList.add('correct_answer_wrapper');
+   if (answer01.textContent == correctAnswer) {
+      answerWrapper01.classList.add('correct_answer_wrapper');
    }
-   if (answer2 == correctAnswer) {
-      answerWrapper2.classList.add('correct_answer_wrapper');
+   if (answer02.textContent == correctAnswer) {
+      answerWrapper02.classList.add('correct_answer_wrapper');
    }
-   if (answer3 == correctAnswer) {
-      answerWrapper3.classList.add('correct_answer_wrapper');
+   if (answer03.textContent == correctAnswer) {
+      answerWrapper03.classList.add('correct_answer_wrapper');
    }
-   if (answer4 == correctAnswer) {
-      answerWrapper4.classList.add('correct_answer_wrapper');
+   if (answer04.textContent == correctAnswer) {
+      answerWrapper04.classList.add('correct_answer_wrapper');
    }
    setTimeout(gameOver, 1000);
 }
-
 
 
 // GAME OVER ...
@@ -286,29 +288,14 @@ function restartTheGame() {
 }
 
 
-
 // TIPS
 // FRIENDS HELP
 let friendHelp = document.getElementById('friendsHelp');
    
-friendHelp.addEventListener('click', function friendsHelp() {
+friendHelp.addEventListener('click', function friendsTips() {
    friendHelp.style.backgroundColor = '#FFD700';
 
-   let answer01 = document.getElementById('answer01');
-   let answerWrapper01 = document.getElementById('answer_wrapper_01');
-
-   let answer02 = document.getElementById('answer02');
-   let answerWrapper02 = document.getElementById('answer_wrapper_02');
-
-   let answer03 = document.getElementById('answer03');
-   let answerWrapper03 = document.getElementById('answer_wrapper_03');
-
-   let answer04 = document.getElementById('answer04');
-   let answerWrapper04 = document.getElementById('answer_wrapper_04');
-
-   let rightAnswer = currentObj.correctAnswer;
-
-   switch (rightAnswer) {
+   switch (correctAnswer) {
       case answer01.textContent:
          correctAnswerWrapper = answerWrapper01;
          continueAfterTips();
@@ -329,56 +316,72 @@ friendHelp.addEventListener('click', function friendsHelp() {
 }, { once:true });
 
 
+// AUDIENCE HELP
+let audienceHelp = document.getElementById('audienceHelp');
 
-// let helpByFriends = false;
-// function friendsHelp() {
-//    if (!helpByFriends) {
-//       // friendHelp.style.backgroundColor = 'green';
+audienceHelp.addEventListener('click', function audienceHelpTips() {
+   audienceHelp.style.backgroundColor = '#FFD700';
 
-//       let answer01 = document.getElementById('answer01');
-//       let answerWrapper01 = document.getElementById('answer_wrapper_01');
-   
-//       let answer02 = document.getElementById('answer02');
-//       let answerWrapper02 = document.getElementById('answer_wrapper_02');
-   
-//       let answer03 = document.getElementById('answer03');
-//       let answerWrapper03 = document.getElementById('answer_wrapper_03');
-   
-//       let answer04 = document.getElementById('answer04');
-//       let answerWrapper04 = document.getElementById('answer_wrapper_04');
-   
-//       let rightAnswer = currentObj.correctAnswer;
-   
-//       switch (rightAnswer) {
-//          case answer01.textContent:
-//             correctAnswerWrapper = answerWrapper01;
-//             continueAfterTips();
-//             break;
-//          case answer02.textContent:
-//             correctAnswerWrapper = answerWrapper02;
-//             continueAfterTips();
-//             break;
-//          case answer03.textContent:
-//             correctAnswerWrapper = answerWrapper03;
-//             continueAfterTips();
-//             break;
-//          case answer04.textContent:
-//             correctAnswerWrapper = answerWrapper04;
-//             continueAfterTips();
-//             break;
-//       }
-//    }
-//    helpByFriends = true;
-// }
+   switch (correctAnswer) {
+      case answer01.textContent:
+         correctAnswerWrapper = answerWrapper01;
+         continueAfterTips();
+         break;
+      case answer02.textContent:
+         correctAnswerWrapper = answerWrapper02;
+         continueAfterTips();
+         break;
+      case answer03.textContent:
+         correctAnswerWrapper = answerWrapper03;
+         continueAfterTips();
+         break;
+      case answer04.textContent:
+         correctAnswerWrapper = answerWrapper04;
+         continueAfterTips();
+         break;
+   }
+}, {once: true});
 
-function continueAfterTips() {
-   addAndRemoveCorrectWrapper();
-   clearInterval(interval);
-   setTimeout(continueOrPrize, 1000);
+
+// FIFTY-FIFTY HELP
+let fiftyFiftyHelp = document.getElementById('fiftyFifty');
+
+fiftyFiftyHelp.addEventListener('click', function fiftyFiftyTips() {
+   fiftyFiftyHelp.style.backgroundColor = '#FFD700';
+
+   let wrongAnswerArr = [];
+
+   answer01.textContent == correctAnswer ? correctFiftyWrapper = answerWrapper01 : wrongAnswerArr.push(answer01);
+   answer02.textContent == correctAnswer ? correctFiftyWrapper = answerWrapper02 : wrongAnswerArr.push(answer02);
+   answer03.textContent == correctAnswer ? correctFiftyWrapper = answerWrapper03 : wrongAnswerArr.push(answer03);
+   answer04.textContent == correctAnswer ? correctFiftyWrapper = answerWrapper04 : wrongAnswerArr.push(answer04);
+
+   if (wrongAnswerArr.length == 3) {
+      let randomNumber = getRandomNumber();
+      let randomWrongAnswer = wrongAnswerArr[randomNumber]; 
+      wrongFiftyWrapper = randomWrongAnswer.parentElement;
+      fifty = true;
+      addAndRemoveFifftyWrapper();
+   }
+
+}, {once: true});
+
+function getRandomNumber() {
+   return Math.floor(Math.random() * 3);
+}
+
+function addAndRemoveFifftyWrapper() {
+   correctFiftyWrapper.classList.toggle('answers_for_fiftyfifty');
+   wrongFiftyWrapper.classList.toggle('answers_for_fiftyfifty');
 }
 
 
-
+// CONTINUE AFTER TIPS
+function continueAfterTips() {
+   addAndRemoveCorrectWrapper();
+   clearInterval(intervalId);
+   setTimeout(continueOrPrize, 1000);
+}
 
 
 
